@@ -5,6 +5,12 @@ require("dotenv").config();
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next)
+{
+    console.log(req.method + ' ' + req.path + ' ' + '-' + ' ' + req.ip);
+    next();
+})
+
 console.log("Hello World")
 
 app.get('/', function (req, res) {
