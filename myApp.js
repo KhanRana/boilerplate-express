@@ -13,11 +13,13 @@ app.use(function (req, res, next) {
 
 console.log("Hello World");
 
+//send client home page
 app.get("/", function (req, res) {
   // res.send("Hello Express");
   res.sendFile(__dirname + "/views/index.html");
 });
 
+//send client greeting when endpoint is "/json"
 app.get("/json", (req, res) => {
   let response = "Hello json";
   if (process.env.MESSAGE_STYLE === "uppercase") {
@@ -28,6 +30,7 @@ app.get("/json", (req, res) => {
   });
 });
 
+//send client time of the request when endpoint is "/now"
 app.get(
   "/now",
   function (req, res, next) {
@@ -40,5 +43,12 @@ app.get(
     });
   }
 );
+
+//read user request data and return to the client
+app.get("/:word/echo", (req, res) => {
+    res.json({
+        "echo": req.params.word,
+    });
+});
 
 module.exports = app;
