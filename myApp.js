@@ -46,9 +46,18 @@ app.get(
 
 //read user request data and return to the client
 app.get("/:word/echo", (req, res) => {
-    res.json({
-        "echo": req.params.word,
-    });
+  res.json({
+    echo: req.params.word,
+  });
+});
+
+//get and post requests for a path
+app.route("/library").get((req, res) => {
+  const firstname = req.query.firstname;
+  const lastname = req.query.lastname;
+  res.json({
+    name: firstname + " " + lastname,
+  });
 });
 
 module.exports = app;
