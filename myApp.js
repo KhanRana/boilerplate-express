@@ -52,7 +52,7 @@ app.get("/:word/echo", (req, res) => {
 });
 
 //get and post requests for a path
-app.route("/library").get((req, res) => {
+app.route("/name").get((req, res) => {
   const firstname = req.query.firstname;
   const lastname = req.query.lastname;
   res.json({
