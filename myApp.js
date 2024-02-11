@@ -53,10 +53,10 @@ app.get("/:word/echo", (req, res) => {
 
 //get and post requests for a path
 app.route("/name").get((req, res) => {
-  const firstname = req.query.firstname;
-  const lastname = req.query.lastname;
+  const first = req.query.firstname;
+  const last = req.query.lastname;
   res.json({
-    name: firstname + " " + lastname,
+    name: first + " " + last,
   });
 });
 
