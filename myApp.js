@@ -54,7 +54,7 @@ app.get("/:word/echo", (req, res) => {
 });
 
 //post body parser
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //parse json data
 app.use(bodyParser.json());
@@ -67,6 +67,12 @@ app.route("/name").get((req, res) => {
   res.json({
     name: firstName + " " + lastName,
   });
+}).post((req, res) => {
+  const firstName = req.body.first;
+  const lastName = req.body.last;
+  res.send({
+    name: firstName + " " + lastName,
+  })
 });
 
 module.exports = app;
