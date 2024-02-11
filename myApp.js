@@ -3,6 +3,7 @@ let express = require("express");
 let app = express();
 const path = require("path");
 require("dotenv").config();
+const bodyParser = require("body-parser")
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
@@ -10,6 +11,7 @@ app.use(function (req, res, next) {
   console.log(req.method + " " + req.path + " " + "-" + " " + req.ip);
   next();
 });
+
 
 console.log("Hello World");
 
@@ -50,6 +52,13 @@ app.get("/:word/echo", (req, res) => {
     echo: req.params.word,
   });
 });
+
+//post body parser
+app.use(bodyParser.urlencoded({extended:false}));
+
+//parse json data
+app.use(bodyParser.json());
+
 
 //get and post requests for a path
 app.route("/name").get((req, res) => {
